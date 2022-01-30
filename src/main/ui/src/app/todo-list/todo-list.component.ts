@@ -24,15 +24,14 @@ export class TodoListComponent implements OnInit {
     
     if(this.selectedTodo.id !== undefined)
     {
-      //this.selectedTodo.title = todoForm.value.title;
       this.updateTodo(this.selectedTodo);
     } 
     else {
-      //let todo:Todo = new Todo();
-      //todo.title = todoForm.value.title;
       this.service.createTodo(this.selectedTodo).subscribe((data)=>{
         console.log("created")
       });
+
+      this.refresh();
     }
     
     
@@ -52,15 +51,20 @@ export class TodoListComponent implements OnInit {
   updateTodo(updateTodo:Todo){
     console.log("update");
     this.service.updateTodo(updateTodo).subscribe(data =>{
-      this.selectedTodo = new Todo();
+      this.selectedTodo = new Todo();     
     })
   }
 
   deleteTodo(todo:Todo){
     console.log("delete");
     this.service.deleteTodo(todo).subscribe(data =>{
-      console.dir(data)
+      this.refresh();
     })
+  }
+
+  refresh()
+  {
+    this.getAllTodos();
   }
 
 }

@@ -1,0 +1,10 @@
+
+.todoForm{
+    margin: 5px 10px 5px 5px;
+    padding-top: 10px;
+    background-color: dimgray;
+    border-radius: 5px;
+    border-width: 3px;
+    align-items: center;   
+    justify-content: center;
+}
